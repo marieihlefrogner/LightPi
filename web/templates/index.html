@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Light switch</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <h1>Light toggle!</h1>
+                    <div id="toggles">
+                        <input type="checkbox" name="switch" id="switch" class="ios-toggle" checked/>
+                        <label for="switch" class="checkbox-label" data-off="Off" data-on="On"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <form method="post" action="/alarm">
+                        <h2>Switch the light for me at:</h2>
+                        <div class="form-group"> <!-- Date input -->
+                            <label class="control-label" for="date">Date</label>
+                            <input class="form-control" id="date" name="date" value="{{ day }}" placeholder="DD/MM/YYYY" type="text">
+                        </div>
+                        <div class="form-group"> <!-- Time input -->
+                            <label class="control-label" for="time">Time</label>
+                            <input class="form-control" id="time" name="time" value="{{ hour }}" placeholder="HH:MM" type="text">
+                        </div>
+                        <div class="form-group"> <!-- State input -->
+                            <input type="checkbox" name="alarm_on_off" id="alarm_on_off" class="ios-toggle" checked/>
+                            <label for="alarm_on_off" class="checkbox-label" data-off="Off" data-on="On"></label>
+                        </div>
+                        <div class="form-group"> <!-- Submit button -->
+                            <button class="btn btn-primary" id="submit" name="submit" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
